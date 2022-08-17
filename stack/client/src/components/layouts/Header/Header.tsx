@@ -1,7 +1,14 @@
 import React from 'react';
-import { AppBar, Button, Toolbar, Typography } from '@mui/material';
+import {
+  AppBar,
+  Button,
+  Toolbar,
+  Typography,
+} from '@mui/material';
 import { Box, Container } from '@mui/system';
-import LoginButton from '../../LoginButton/LoginButton';
+import LoginButton from '../../LoginButtons/LoginButton';
+import LogoutButton from '../../LoginButtons/LogoutButton';
+import Profile from '../../LoginButtons/Profile';
 
 const Header = function renderHeader() {
   return (
@@ -25,15 +32,16 @@ const Header = function renderHeader() {
             />
           </svg>
           <Typography marginLeft={1}>MeowTime</Typography>
-
-          <Box mr={3} ml={90}>
+          <LogoutButton />
+          <LoginButton />
+          <Box mr={3}>
             <Button color="inherit" variant="outlined">
-              Log In
+              Sign Up
             </Button>
           </Box>
-          <LoginButton />
         </Toolbar>
       </Container>
+      <Profile />
     </AppBar>
   );
 };

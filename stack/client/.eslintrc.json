@@ -24,6 +24,6 @@
     ],
     "rules": {
         "@typescript-eslint/no-explicit-any": "error", 
-        "linebreak-style": ["error", "never"]
+        "linebreak-style": 0
     }
 }

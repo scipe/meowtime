@@ -3,16 +3,20 @@ import { useAuth0 } from '@auth0/auth0-react';
 import { Button } from '@mui/material';
 import { Box } from '@mui/system';
 
-const LoginButton = () => {
+function LoginButton() {
   const { loginWithRedirect } = useAuth0();
 
   return (
     <Box mr={3}>
-      <Button color="inherit" variant="outlined">
-        Sign In
+      <Button
+        onClick={() => loginWithRedirect()}
+        color="inherit"
+        variant="outlined"
+      >
+        Log In
       </Button>
     </Box>
   );
-};
+}
 
 export default LoginButton;
