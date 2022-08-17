@@ -1,5 +1,5 @@
 import express from "express"
-import pack from '../package.json' assert {type: "json"};
+import pack from '../package.json' assert {type: "json"}
 
 const router = express.Router()
 
