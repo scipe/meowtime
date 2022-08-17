@@ -1,27 +1,28 @@
-import express from "express"
-import pack from '../package.json' assert {type: "json"}
+import express from 'express';
+import pack from '../package.json' assert { type: 'json' };
 
+// test
+const router = express.Router();
 
-const router = express.Router()
-
-router.route("/").get((req, res) => {
+router.route('/').get((req, res) => {
   res.setHeader('Content-Type', 'application/json');
-  res.end(JSON.stringify({
-    status: 200,
-    message: "root",
-    data: {}
-  }))
-})
-router.route("/version").get(
-
-  (req, res) => {
-    res.setHeader('Content-Type', 'application/json');
-    res.end(JSON.stringify({
+  res.end(
+    JSON.stringify({
       status: 200,
-      message: "version",
-      data: { api_version: pack.version }
-    }))
-  }
-)
+      message: 'root',
+      data: {},
+    })
+  );
+});
+router.route('/version').get((req, res) => {
+  res.setHeader('Content-Type', 'application/json');
+  res.end(
+    JSON.stringify({
+      status: 200,
+      message: 'version',
+      data: { api_version: pack.version },
+    })
+  );
+});
 
-export default router
+export default router;
