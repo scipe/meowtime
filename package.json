@@ -29,7 +29,7 @@
     "concurrent": false,
     "subTaskConcurrency": 1,
     "linters": {
-      "*.js,tsx,scss,sass": [
+      "*.{js,tsx,scss,sass}": [
           "prettier --write",
           "git add"
       ]
