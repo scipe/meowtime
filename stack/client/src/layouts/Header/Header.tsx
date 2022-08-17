@@ -5,19 +5,20 @@ import {
   Toolbar,
   Typography,
 } from '@mui/material';
-import { Box, Container } from '@mui/system';
-import LogoutButton from '../../components/LoginButtons/LogoutButton';
+
+import { Container } from '@mui/system';
 import LoginButton from '../../components/LoginButtons/LoginButton';
+import LogoutButton from '../../components/LoginButtons/LogoutButton';
 import Profile from '../../components/LoginButtons/Profile';
 
 const Header = () => {
   return (
-    <AppBar>
+    <AppBar sx={{ background: '#FFF', color: '#4C51E1' }}>
       <Container>
-        <Toolbar>
+        <Toolbar sx={{ height: 100 }}>
           <svg
-            width="80"
-            height="80"
+            width="70"
+            height="70"
             viewBox="0 0 80 80"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
@@ -31,14 +32,12 @@ const Header = () => {
               fill="white"
             />
           </svg>
-          <Typography marginLeft={1}>MeowTime</Typography>
+          <Typography fontFamily="Poppins" fontSize="36px" sx={{ color: 'black' }} marginLeft={1.2}>MeowTime</Typography>
           <LogoutButton />
           <LoginButton />
-          <Box mr={3}>
-            <Button color="inherit" variant="outlined">
-              Sign Up
-            </Button>
-          </Box>
+          <Button color="inherit" variant="outlined">
+            Sign Up
+          </Button>
         </Toolbar>
       </Container>
       <Profile />
