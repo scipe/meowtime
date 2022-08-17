@@ -6,9 +6,9 @@ import {
   Typography,
 } from '@mui/material';
 import { Box, Container } from '@mui/system';
-import LoginButton from '../../LoginButtons/LoginButton';
-import LogoutButton from '../../LoginButtons/LogoutButton';
-import Profile from '../../LoginButtons/Profile';
+import LogoutButton from '../../components/LoginButtons/LogoutButton';
+import LoginButton from '../../components/LoginButtons/LoginButton';
+import Profile from '../../components/LoginButtons/Profile';
 
 const Header = () => {
   return (
