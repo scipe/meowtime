@@ -1,7 +1,7 @@
 import express from "express"
 import pack from '../package.json' assert {type: "json"}
 
-// test
+
 const router = express.Router()
 
 router.route("/").get((req, res) => {
