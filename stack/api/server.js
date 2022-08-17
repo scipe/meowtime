@@ -1,25 +1,12 @@
 import express from 'express';
-import pack from './package.json' assert {type: "json"};
-import dotenv from "dotenv";
+import routes from './routes/index.js';
 
-dotenv.config();
-const port = process.env.PORT
+const app = express();
 
-var app = express();
+app.use(express.json())
 
-app.get("/", function (req, res) {
-  console.log('slash request')
-  res.setHeader('Content-Type', 'application/json');
-  res.end(JSON.stringify({ simple: 'data' }))
+app.use("/", routes)
+app.use("/version/", routes)
+app.use("*", (req, res) => res.status(404).json({ error: "not found" }))
 
-});
-
-app.get("/version", function (req, res) {
-  console.log('version request')
-  res.send('API version: ' + pack.version);
-});
-
-
-var server = app.listen(port, function () {
-  console.log("Server is running on port", port);
-});
+export default app
