@@ -1,9 +1,8 @@
-import React from 'react'
+import React from 'react';
 
-function Splash() {
+const Splash = () => {
   return (
     <div>Splash</div>
-  )
-}
-
-export default Splash
+  );
+};
+export default Splash;

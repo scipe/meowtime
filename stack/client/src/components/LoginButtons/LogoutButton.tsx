@@ -3,7 +3,7 @@ import { useAuth0 } from '@auth0/auth0-react';
 import { Button } from '@mui/material';
 import { Box } from '@mui/system';
 
-function LogoutButton() {
+const LogoutButton = () => {
   const { logout } = useAuth0();
   return (
     <Box mr={3} marginLeft={70}>
@@ -16,6 +16,6 @@ function LogoutButton() {
       </Button>
     </Box>
   );
-}
+};
 
 export default LogoutButton;

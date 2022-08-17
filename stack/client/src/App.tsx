@@ -3,7 +3,7 @@ import './App.css';
 import { Auth0Provider } from '@auth0/auth0-react';
 import Header from './components/layouts/Header/Header';
 
-function App() {
+const App = () => {
   return (
     <Auth0Provider
       domain="meowtime.eu.auth0.com"
@@ -13,6 +13,6 @@ function App() {
       <Header />
     </Auth0Provider>
   );
-}
+};
 
 export default App;

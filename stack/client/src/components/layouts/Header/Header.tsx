@@ -10,7 +10,7 @@ import LoginButton from '../../LoginButtons/LoginButton';
 import LogoutButton from '../../LoginButtons/LogoutButton';
 import Profile from '../../LoginButtons/Profile';
 
-const Header = function renderHeader() {
+const Header = () => {
   return (
     <AppBar>
       <Container>
