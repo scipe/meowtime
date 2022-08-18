@@ -1,9 +1,9 @@
 import React from 'react';
 import { Auth0Provider } from '@auth0/auth0-react';
 import Header from '../../layouts/Header/Header';
-import Capabilities from '../../layouts/splash/Capabilities/Capabilities';
-import SectionAbout from '../../layouts/splash/SectionAbout/SectionAbout';
-import SectionReview from '../../layouts/splash/SectionReview/SectionReview';
+import SectionCapabilities from '../../layouts/splash/SectionCapabilities';
+import SectionAbout from '../../layouts/splash/SectionAbout';
+import SectionReview from '../../layouts/splash/SectionReview';
 
 const Splash = () => {
   return (
@@ -15,7 +15,7 @@ const Splash = () => {
       >
         <Header />
       </Auth0Provider>
-      <Capabilities />
+      <SectionCapabilities />
       <SectionAbout />
       <SectionReview />
     </>
