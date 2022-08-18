@@ -5,6 +5,7 @@ import SectionCapabilities from '../../layouts/splash/SectionCapabilities';
 import SectionAbout from '../../layouts/splash/SectionAbout';
 import SectionReview from '../../layouts/splash/SectionReview';
 import SectionPets from '../../layouts/splash/SectionPets';
+import Footer from '../../layouts/Footer/Footer';
 
 const Splash = () => {
   return (
@@ -20,6 +21,7 @@ const Splash = () => {
       <SectionAbout />
       <SectionReview />
       <SectionPets />
+      <Footer />
     </>
   );
 };
