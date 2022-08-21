@@ -1,6 +1,7 @@
 version: "3"
 services:
   mongo:
+    restart: on-failure
     container_name: mongo
     image: mongo:latest
     environment:
@@ -8,6 +9,6 @@ services:
       - MONGO_INITDB_ROOT_USERNAME=admin
       - MONGO_INITDB_ROOT_PASSWORD=p@ssw0rd
     volumes:
-      - ${MONGO_HOST_DATA}/db:/data/db
+      - ${MONGO_HOST_DATA}/.database:/data/db
     ports:
       - "27017:27017"
