@@ -15,7 +15,7 @@
 ## Run the server
 
 `npm start`
-`npm run start-dev`
+`npm run dev`
 
 # REST API
 
