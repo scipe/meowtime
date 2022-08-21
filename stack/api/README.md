@@ -1,27 +1,31 @@
-# Meowtime REST API  
+# Meowtime REST API
 
 ## Node.js version
 
 16.16.0
 
 ## Port number
+
 5000
 
-## Install  
+## Install
 
-```npm install```
+`npm install`
 
-## Run the server  
+## Run the server
 
-```node server```
+`npm start`
+`npm run start-dev`
 
 # REST API
+
 The REST API for the Meowtime application.
 
 ## Get the main page
 
 ### Request
-```GET /```
+
+`GET /`
 
 ### Response
 
@@ -35,11 +39,11 @@ X-Powered-By: Express
 { "simple": "data" }
 ```
 
-
 ## Get the API version
 
 ### Request
-```GET /version/```
+
+`GET /version/`
 
 ### Response
 
