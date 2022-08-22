@@ -104,4 +104,47 @@ export default class petsDAO {
       return breeds;
     }
   }
+
+  static async addPet(
+    ownerId,
+    petSpice,
+    name,
+    age,
+    photo,
+    breed,
+    color,
+    gender,
+    isCastrated,
+    isVaccinated,
+    isFleaTreated,
+    weight,
+    fears,
+    diseases,
+    createdAt
+  ) {
+    try {
+      const petDoc = {
+        ownerId: ObjectId(ownerId),
+        petSpice,
+        name,
+        age,
+        photo,
+        breed,
+        color,
+        gender,
+        isCastrated,
+        isVaccinated,
+        isFleaTreated,
+        weight,
+        fears,
+        diseases,
+        createdAt,
+      };
+      console.log('name: ', name);
+      return await pets.insertOne(petDoc);
+    } catch (e) {
+      console.error(`Unable to post review: ${e}`);
+      throw new Error(e);
+    }
+  }
 }

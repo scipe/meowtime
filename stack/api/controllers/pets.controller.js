@@ -52,4 +52,47 @@ export default class PetsController {
       res.status(500).json({ error: e });
     }
   }
+
+  static async apiPostPet(req, res, next) {
+    try {
+      const ownerId = req.body.ownerId;
+      const petSpice = req.body.petSpice;
+      const name = req.body.name;
+      const age = req.body.age;
+      const photo = req.body.photo;
+      const breed = req.body.breed;
+      const color = req.body.color;
+      const gender = req.body.gender;
+      const isCastrated = req.body.isCastrated;
+      const isVaccinated = req.body.isVaccinated;
+      const isFleaTreated = req.body.isFleaTreated;
+      const weight = req.body.weight;
+      const fears = req.body.fears;
+      const diseases = req.body.diseases;
+      const createdAt = new Date();
+      console.log(req.body);
+
+      const PetResponse = await PetsDAO.addPet(
+        ownerId,
+        petSpice,
+        name,
+        age,
+        photo,
+        breed,
+        color,
+        gender,
+        isCastrated,
+        isVaccinated,
+        isFleaTreated,
+        weight,
+        fears,
+        diseases,
+        createdAt
+      );
+
+      res.json({ status: PetResponse });
+    } catch (e) {
+      res.status(500).json({ error: e.message });
+    }
+  }
 }
