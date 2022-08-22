@@ -1,7 +1,6 @@
 import React from 'react';
 import {
   AppBar,
-  Button,
   Toolbar,
   Typography,
 } from '@mui/material';
@@ -10,6 +9,7 @@ import { Container } from '@mui/system';
 import LoginButton from '../../components/LoginButtons/LoginButton';
 import LogoutButton from '../../components/LoginButtons/LogoutButton';
 import Profile from '../../components/LoginButtons/Profile';
+import SignUpButton from '../../components/LoginButtons/SignUpButton';
 
 const Header = () => {
   return (
@@ -35,9 +35,7 @@ const Header = () => {
           <Typography fontFamily="Poppins" fontSize="36px" sx={{ color: 'black' }} marginLeft={1.2}>MeowTime</Typography>
           <LogoutButton />
           <LoginButton />
-          <Button color="inherit" variant="outlined">
-            Sign Up
-          </Button>
+          <SignUpButton />
         </Toolbar>
       </Container>
       <Profile />

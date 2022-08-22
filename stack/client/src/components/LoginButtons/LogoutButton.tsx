@@ -6,7 +6,7 @@ import { Box } from '@mui/system';
 const LogoutButton = () => {
   const { logout } = useAuth0();
   return (
-    <Box mr={3} marginLeft={65}>
+    <Box mr={3} marginLeft={60}>
       <Button
         onClick={() => logout({ returnTo: window.location.origin })}
         color="inherit"
