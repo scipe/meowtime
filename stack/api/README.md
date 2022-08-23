@@ -21,40 +21,108 @@
 
 The REST API for the Meowtime application.
 
-## Get the main page
+## Get all pets
 
-### Request
+#### Request:
 
-`GET /`
+`GET /api`
 
-### Response
+`GET /api/pets`
 
-```Connection: keep-alive
-Content-Length: 17
-Content-Type: application/json
-Date: Tue, 16 Aug 2022 11:23:56 GMT
-Keep-Alive: timeout=5
-X-Powered-By: Express
+#### Response:
 
-{ "simple": "data" }
 ```
+{
+    "status": 200,
+    "message": "all pets",
+    "data": {
+        "pets": [
+            {
+                "_id": "630483cf80b7d0b1416a39cb",
+                "uuid": "aa446c2c-42e3-463e-962f-682ec5930101",
+                "ownerId": "google-oauth2|108104244842814913076",
+                "petSpice": "cat",
+                "name": "Luna",
+                "age": 1,
+                "breed": "Turkish Van",
+                "gender": "m",
+                "isCastrated": true,
+                "isVaccinated": true,
+                "isFleaTreated": true,
+                "weight": 10,
+                "createdAt": "2022-07-31T13:31:00.000Z",
+                "updatedAt": "2022-08-02T13:02:00.000Z"
+            },
+        ],
+        "page": 0,
+        "filters": {},
+        "entries_per_page": 20,
+        "total_results": 24
+    }
+}
+```
+
+---
+
+## Get pet by uuid
+
+#### Request:
+
+`GET /api/pet/aa446c2c-42e3-463e-962f-682ec5930101`
+
+#### Response:
+
+```
+{
+    "status": 200,
+    "message": "pet",
+    "data": {
+        "_id": "630483cf80b7d0b1416a39cb",
+        "uuid": "aa446c2c-42e3-463e-962f-682ec5930101",
+        "ownerId": "google-oauth2|108104244842814913076",
+        "petSpice": "cat",
+        "name": "Luna",
+        "age": 1,
+        "breed": "Turkish Van",
+        "gender": "m",
+        "isCastrated": true,
+        "isVaccinated": true,
+        "isFleaTreated": true,
+        "weight": 10,
+        "createdAt": "2022-07-31T13:31:00.000Z",
+        "updatedAt": "2022-08-02T13:02:00.000Z",
+        "reviews": [
+            {
+                "_id": "630486e580b7d0b1416a3a0d",
+                "uuid": "e7781137-9cb3-4138-a4a8-4fb6468ffbc2",
+                "reviewerId": "google-oauth2|108104244842814913076",
+                "petId": "aa446c2c-42e3-463e-962f-682ec5930101",
+                "review": "some text about pet",
+                "rate": 3,
+                "createdAt": "2022-08-25T13:25:00.000Z",
+                "updatedAt": "2022-08-27T13:27:00.000Z"
+            },
+        ]
+    }
+}
+```
+
+---
 
 ## Get the API version
 
-### Request
+#### Request:
 
-`GET /version/`
+`GET /api/version/`
 
-### Response
+#### Response:
 
 ```
-Connection: keep-alive
-Content-Length: 18
-Content-Type: text/html; charset=utf-8
-Date: Tue, 16 Aug 2022 11:35:23 GMT
-ETag: W/"12-GOK2Ij6jENtNxg9usdLNYCPxQLw"
-Keep-Alive: timeout=5
-X-Powered-By: Express
-
-API version: 1.0.0
+{
+    "status": 200,
+    "message": "version",
+    "data": {
+        "api_version": "1.0.0"
+    }
+}
 ```

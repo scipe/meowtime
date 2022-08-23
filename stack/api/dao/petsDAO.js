@@ -49,6 +49,30 @@ export default class petsDAO {
     }
   }
 
+  static async getPetByUuid(uuid) {
+    try {
+      const pipeline = [
+        {
+          $match: {
+            uuid,
+          },
+        },
+        {
+          $lookup: {
+            from: 'reviews',
+            localField: 'uuid',
+            foreignField: 'petId',
+            as: 'reviews',
+          },
+        },
+      ];
+      return await pets.aggregate(pipeline).next();
+    } catch (e) {
+      console.error(`Something went wrong in getPetByID: ${e}`);
+      throw e;
+    }
+  }
+
   static async getPetById(id) {
     try {
       const pipeline = [
@@ -104,7 +128,7 @@ export default class petsDAO {
     }
   }
 
-  static async addPet(
+  static async addPet({
     ownerId,
     petSpice,
     name,
@@ -119,8 +143,8 @@ export default class petsDAO {
     weight,
     fears,
     diseases,
-    createdAt
-  ) {
+    createdAt,
+  }) {
     try {
       const petDoc = {
         ownerId,

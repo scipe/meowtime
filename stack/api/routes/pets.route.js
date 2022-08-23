@@ -26,7 +26,7 @@ router.route('/api/public').get(function (req, res) {
 });
 
 router.route('/api/pets').get(petsCtrl.apiGetPets);
-router.route('/api/pet/:id').get(petsCtrl.apiGetPetById);
+router.route('/api/pet/:uuid').get(petsCtrl.apiGetPetByUuid);
 router.route('/api/pet').post(petsCtrl.apiPostPet);
 
 router.get('/api/private', checkJwt, function (req, res) {
