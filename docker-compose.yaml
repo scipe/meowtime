@@ -10,5 +10,6 @@ services:
       - MONGO_INITDB_ROOT_PASSWORD=p@ssw0rd
     volumes:
       # - ${MONGO_HOST_DATA}/.database:/data/db
+      - /mongodb/.database:/data/db
     ports:
       - "27017:27017"

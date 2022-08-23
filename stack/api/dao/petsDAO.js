@@ -10,7 +10,6 @@ export default class petsDAO {
     }
     try {
       pets = await conn.db(process.env.MEOWTIME_NS).collection('pets');
-      // console.log('petss: ', pets)
     } catch (e) {
       console.error(`Unable to establish a collection handle in petsDAO: ${e}`);
     }
@@ -124,7 +123,7 @@ export default class petsDAO {
   ) {
     try {
       const petDoc = {
-        ownerId: ObjectId(ownerId),
+        ownerId,
         petSpice,
         name,
         age,
