@@ -17,11 +17,13 @@
 `npm start`
 `npm run dev`
 
+&nbsp;
+
 # REST API
 
 The REST API for the Meowtime application.
 
-## Get all pets
+# Get all pets
 
 #### Request:
 
@@ -62,9 +64,9 @@ The REST API for the Meowtime application.
 }
 ```
 
----
+&nbsp;
 
-## Get pet by uuid
+# Get pet by uuid
 
 #### Request:
 
@@ -107,9 +109,65 @@ The REST API for the Meowtime application.
 }
 ```
 
----
+&nbsp;
 
-## Get the API version
+# Get non-existing pet by uuid
+
+#### Request:
+
+`GET /api/pet/12345`
+
+#### Response:
+
+```
+{
+    "status": 404,
+    "reason": "Not found"
+}
+```
+
+&nbsp;
+
+# Create new pet
+
+#### Request:
+
+`POST /api/pet`
+
+#### Response:
+
+```
+{
+    "status": 200,
+    "message": "New pet added",
+    "mongodb_response": {
+        "acknowledged": true,
+        "insertedId": "6304e2dd84767963ad1539ab"
+    },
+    "data": {
+        "_id": "6304e2dd84767963ad1539ab",
+        "ownerId": "google-oauth2|108104244842814913076",
+        "petSpice": "dog",
+        "name": "Timmi",
+        "age": 3,
+        "photo": "some_url",
+        "breed": "dvorny",
+        "color": "gray",
+        "gender": "m",
+        "isCastrated": true,
+        "isVaccinated": true,
+        "isFleaTreated": true,
+        "weight": 10,
+        "fears": "no",
+        "diseases": "no",
+        "createdAt": "2022-08-23T14:23:25.911Z"
+    }
+}
+```
+
+&nbsp;
+
+# Get the API version
 
 #### Request:
 
