@@ -1,14 +1,8 @@
 import React from 'react';
-import {
-  AppBar,
-  Toolbar,
-  Typography,
-} from '@mui/material';
-
+import { AppBar, Toolbar, Typography } from '@mui/material';
 import { Container } from '@mui/system';
 import LoginButton from '../../components/LoginButtons/LoginButton';
 import LogoutButton from '../../components/LoginButtons/LogoutButton';
-import Profile from '../../components/LoginButtons/Profile';
 import SignUpButton from '../../components/LoginButtons/SignUpButton';
 
 const Header = () => {
@@ -32,13 +26,14 @@ const Header = () => {
               fill="white"
             />
           </svg>
-          <Typography fontFamily="Poppins" fontSize="36px" sx={{ color: 'black' }} marginLeft={1.2}>MeowTime</Typography>
+          <Typography fontFamily="Poppins" fontSize="36px" sx={{ color: 'black' }} marginLeft={1.2}>
+            MeowTime
+          </Typography>
           <LogoutButton />
           <LoginButton />
           <SignUpButton />
         </Toolbar>
       </Container>
-      <Profile />
     </AppBar>
   );
 };

@@ -1,4 +1,5 @@
 import React from 'react';
+import { useAuth0, User } from '@auth0/auth0-react';
 import TextField from '@mui/material/TextField';
 import {
   FormControl,
@@ -10,6 +11,8 @@ import {
 import { Box } from '@mui/system';
 
 const UserAccountInfo = () => {
+  const { user, isAuthenticated }: User = useAuth0();
+  console.log(user, isAuthenticated);
   return (
     <form>
       <Box
