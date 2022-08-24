@@ -63,7 +63,10 @@ export default class PetsController {
       let uuid = req.params.uuid || {};
       let pet = await PetsDAO.getPetByUuid(uuid);
       if (!pet) {
-        res.status(404).json({ error: 'Not found' });
+        res.status(404).json({
+          status: 404,
+          message: 'Not found',
+        });
         return;
       }
       res.json({
@@ -72,7 +75,7 @@ export default class PetsController {
         data: pet,
       });
     } catch (e) {
-      console.log(`api, ${e}`);
+      // console.log(`api, ${e}`);
       res.status(500).json({
         status: 404,
         message: 'error',
@@ -110,28 +113,14 @@ export default class PetsController {
         diseases: req.body.diseases,
         createdAt: new Date(),
       };
-      // const ownerId = req.body.ownerId;
-      // const petSpice = req.body.petSpice;
-      // const name = req.body.name;
-      // const age = req.body.age;
-      // const photo = req.body.photo;
-      // const breed = req.body.breed;
-      // const color = req.body.color;
-      // const gender = req.body.gender;
-      // const isCastrated = req.body.isCastrated;
-      // const isVaccinated = req.body.isVaccinated;
-      // const isFleaTreated = req.body.isFleaTreated;
-      // const weight = req.body.weight;
-      // const fears = req.body.fears;
-      // const diseases = req.body.diseases;
-      // const createdAt = new Date();
-      // console.log(req.body);
 
-      const PetResponse = await PetsDAO.addPet(newPet);
+      const petResponse = await PetsDAO.addPet(newPet);
 
       res.json({
-        status: PetResponse,
-        data: { _id: PetResponse.insertedId, ...newPet },
+        status: 200,
+        message: 'New pet added',
+        mongodb_response: petResponse,
+        data: { _id: petResponse.insertedId, ...newPet },
       });
     } catch (e) {
       res.status(500).json({ error: e.message });
