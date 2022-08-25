@@ -1,10 +1,9 @@
 import React from 'react';
-import { withAuthenticationRequired } from '@auth0/auth0-react';
 import Footer from '../../layouts/Footer/Footer';
 import UserBar from '../../layouts/userCabinet/UserBar';
 import UserCabinetBody from '../../layouts/userCabinet/UserCabinetBody';
 
-const UserCabinet = () => {
+const UserCabinet: React.FC = () => {
   return (
     <>
       <UserBar />
@@ -14,4 +13,4 @@ const UserCabinet = () => {
   );
 };
 
-export default withAuthenticationRequired(UserCabinet);
+export default UserCabinet;

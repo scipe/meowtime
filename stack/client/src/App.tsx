@@ -5,7 +5,7 @@ import { Auth0Provider } from '@auth0/auth0-react';
 import { createTheme, ThemeProvider } from '@mui/material';
 import Splash from './pages/Splash/Splash';
 import UserCabinet from './pages/UserCabinet/UserCabinet';
-// import RequireAuth from './hoc/RequireAuth';
+import ProtectedRoute from './auth/ProtectedRoute';
 
 const theme = createTheme({
   typography: {
@@ -16,7 +16,7 @@ const theme = createTheme({
   },
 });
 
-const App = () => {
+const App: React.FC = () => {
   return (
     <Auth0Provider
       domain="meowtime.eu.auth0.com"
@@ -28,7 +28,7 @@ const App = () => {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Splash />} />
-            <Route path="cabinet" element={<UserCabinet />} />
+            <Route path="cabinet" element={<ProtectedRoute component={UserCabinet} />} />
           </Routes>
         </BrowserRouter>
       </ThemeProvider>
