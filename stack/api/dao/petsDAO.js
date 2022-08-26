@@ -18,12 +18,47 @@ export default class petsDAO {
   static async getPets({ filters = null, page = 0, petsPerPage = 20 } = {}) {
     let query;
     if (filters) {
-      if ('name' in filters) {
-        query = { $text: { $search: filters['name'] } };
-      } else if ('breed' in filters) {
-        query = { breed: { $eq: filters['breed'] } };
-      } else if ('petSpice' in filters) {
-        query = { petSpice: { $eq: filters['petSpice'] } };
+      console.log('filters: ', filters);
+      const filtersArr = [];
+
+      for (let key of Object.keys(filters)) {
+        switch (key) {
+          case 'name':
+            filtersArr.push({ name: new RegExp(filters['name'], 'i') });
+            break;
+          case 'weightFrom':
+            filtersArr.push({ weight: { $gte: +filters[key] } });
+            break;
+          case 'weightTo':
+            filtersArr.push({ weight: { $lte: +filters[key] } });
+            break;
+          case 'ageFrom':
+            filtersArr.push({ age: { $gte: +filters[key] } });
+            break;
+          case 'ageTo':
+            filtersArr.push({ age: { $lte: +filters[key] } });
+            break;
+          case 'isCastrated':
+            filtersArr.push({ isCastrated: { $eq: filters[key] === 'true' } });
+            break;
+          case 'isVaccinated':
+            filtersArr.push({ isVaccinated: { $eq: filters[key] === 'true' } });
+            break;
+          case 'isFleaTreated':
+            filtersArr.push({ isFleaTreated: { $eq: filters[key] === 'true' } });
+            break;
+
+          default:
+            const obj = {};
+
+            obj[key] = { $eq: filters[key] };
+            filtersArr.push(obj);
+            break;
+        }
+      }
+
+      if (filtersArr.length > 0) {
+        query = { $and: filtersArr };
       }
     }
 
