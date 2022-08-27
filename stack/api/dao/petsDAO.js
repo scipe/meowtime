@@ -15,7 +15,7 @@ export default class petsDAO {
     }
   }
 
-  static async getPets({ filters = null, page = 0, petsPerPage = 20 } = {}) {
+  static async getPets({ filters = null, page = 0, petsPerPage = 1000 } = {}) {
     let query;
     if (filters) {
       console.log('filters: ', filters);
@@ -98,50 +98,6 @@ export default class petsDAO {
             localField: 'uuid',
             foreignField: 'petId',
             as: 'reviews',
-          },
-        },
-      ];
-      return await pets.aggregate(pipeline).next();
-    } catch (e) {
-      console.error(`Something went wrong in getPetByID: ${e}`);
-      throw e;
-    }
-  }
-
-  static async getPetById(id) {
-    try {
-      const pipeline = [
-        {
-          $match: {
-            _id: new ObjectId(id),
-          },
-        },
-        {
-          $lookup: {
-            from: 'reviews',
-            let: {
-              id: '$_id',
-            },
-            pipeline: [
-              {
-                $match: {
-                  $expr: {
-                    $eq: ['$pet_id', '$$id'],
-                  },
-                },
-              },
-              {
-                $sort: {
-                  date: -1,
-                },
-              },
-            ],
-            as: 'reviews',
-          },
-        },
-        {
-          $addFields: {
-            reviews: '$reviews',
           },
         },
       ];
