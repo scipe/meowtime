@@ -18,7 +18,6 @@ export default class petsDAO {
   static async getPets({ filters = null, page = 0, petsPerPage = 1000 } = {}) {
     let query;
     if (filters) {
-      console.log('filters: ', filters);
       const filtersArr = [];
 
       for (let key of Object.keys(filters)) {
@@ -123,7 +122,7 @@ export default class petsDAO {
     try {
       return await pets.insertOne(petDoc);
     } catch (e) {
-      console.error(`Unable to post review: ${e}`);
+      console.error(`Unable to post pet: ${e}`);
       throw new Error(e);
     }
   }

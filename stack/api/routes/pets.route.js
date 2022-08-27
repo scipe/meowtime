@@ -28,6 +28,7 @@ router.route('/api/public').get(function (req, res) {
 router.route('/api/pets').get(petsCtrl.apiGetPets);
 router.route('/api/pet/:uuid').get(petsCtrl.apiGetPetByUuid);
 router.route('/api/pet').post(checkJwt, petsCtrl.apiPostPet);
+router.route('/api/breeds').get(petsCtrl.apiGetPetBreeds);
 
 router.get('/api/private', checkJwt, function (req, res) {
   res.json({
@@ -53,11 +54,11 @@ router.route('/api/version').get((req, res) => {
   );
 });
 
-router.get('*', (req, res) =>
-  res.status(404).json({
-    url: req.protocol + '://' + req.get('host') + req.originalUrl,
-    error: 'not found',
-  })
-);
+// router.get('*', (req, res) =>
+//   res.status(404).json({
+//     url: req.protocol + '://' + req.get('host') + req.originalUrl,
+//     error: 'not found',
+//   })
+// );
 
 export default router;

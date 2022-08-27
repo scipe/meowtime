@@ -61,13 +61,13 @@ export default class PetsController {
       let breeds = await PetsDAO.getBreeds();
       res.json(breeds);
     } catch (e) {
-      console.log(`api, ${e}`);
       res.status(500).json({ error: e });
     }
   }
 
   static async apiPostPet(req, res, next) {
     try {
+      let breed = req.body.breed && req.body.breed.toString();
       const newPet = {
         ownerId: req.body.ownerId,
         uuid: uuid_v4(),
@@ -75,7 +75,7 @@ export default class PetsController {
         name: req.body.name,
         age: req.body.age,
         photo: req.body.photo,
-        breed: req.body.breed,
+        breed: breed.charAt(0).toUpperCase() + breed.slice(1).toLowerCase(),
         color: req.body.color,
         gender: req.body.gender,
         isCastrated: req.body.isCastrated,
