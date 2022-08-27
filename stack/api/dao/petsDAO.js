@@ -165,24 +165,6 @@ export default class petsDAO {
 
   static async addPet(petDoc) {
     try {
-      // const petDoc = {
-      //   ownerId,
-      //   petSpice,
-      //   name,
-      //   age,
-      //   photo,
-      //   breed,
-      //   color,
-      //   gender,
-      //   isCastrated,
-      //   isVaccinated,
-      //   isFleaTreated,
-      //   weight,
-      //   fears,
-      //   diseases,
-      //   createdAt,
-      // };
-      //  console.log('name: ', name);
       return await pets.insertOne(petDoc);
     } catch (e) {
       console.error(`Unable to post review: ${e}`);

@@ -1,27 +1,15 @@
 import PetsDAO from '../dao/petsDAO.js';
+import { v4 as uuid_v4 } from 'uuid';
 
 export default class PetsController {
   static async apiGetPets(req, res, next) {
-    const petsPerPage = req.query.petsPerPage ? parseInt(req.query.petsPerPage, 10) : 20;
+    const petsPerPage = req.query.petsPerPage ? parseInt(req.query.petsPerPage, 10) : 1000;
     const page = req.query.page ? parseInt(req.query.page, 10) : 0; // page number
 
+    delete req.query.petsPerPage;
+    delete req.query.page;
+
     let filters = { ...req.query };
-    console.log('req.query: ', req.query);
-    // if (req.query.name) {
-    //   filters.name = req.query.name;
-    // }
-    // if (req.query.breed) {
-    //   filters.breed = req.query.breed;
-    // }
-    // if (req.query.petSpice) {
-    //   filters.petSpice = req.query.petSpice;
-    // }
-    // if (req.query.gender) {
-    //   filters.gender = req.query.gender;
-    // }
-    // if (req.query.weightFrom) {
-    //   filters.weightFrom = req.query.weightFrom
-    // }
 
     const { petsList, totalNumPets } = await PetsDAO.getPets({
       filters,
@@ -60,7 +48,6 @@ export default class PetsController {
         data: pet,
       });
     } catch (e) {
-      // console.log(`api, ${e}`);
       res.status(500).json({
         status: 404,
         message: 'error',
@@ -83,6 +70,7 @@ export default class PetsController {
     try {
       const newPet = {
         ownerId: req.body.ownerId,
+        uuid: uuid_v4(),
         petSpice: req.body.petSpice,
         name: req.body.name,
         age: req.body.age,
