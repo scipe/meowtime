@@ -2,6 +2,7 @@ import express from 'express';
 import petsRoutes from './routes/pets.route.js';
 import eventsRoutes from './routes/events.route.js';
 import reviewsRoutes from './routes/reviews.route.js';
+import auctionsRoutes from './routes/auctions.route.js';
 import dotenv from 'dotenv';
 
 dotenv.config();
@@ -11,6 +12,7 @@ app.use(express.json());
 app.use(petsRoutes);
 app.use(eventsRoutes);
 app.use(reviewsRoutes);
+app.use(auctionsRoutes);
 
 app.use((err, req, res, next) => {
   if (err.name === 'UnauthorizedError') {
