@@ -24,4 +24,13 @@ app.get('/authorized', function (req, res) {
   res.send('Secured Resource');
 });
 
+app.get('*', (req, res) =>
+  res.status(404).json({
+    status: '404',
+    message: req.protocol + '://' + req.get('host') + req.originalUrl + ' not found',
+    url: req.protocol + '://' + req.get('host') + req.originalUrl,
+    error: 'Not found',
+  })
+);
+
 export default app;
