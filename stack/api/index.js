@@ -3,6 +3,7 @@ import dotenv from 'dotenv';
 import mongodb from 'mongodb';
 import petsDAO from './dao/petsDAO.js';
 import eventsDAO from './dao/eventsDAO.js';
+import reviewsDAO from './dao/reviewsDAO.js';
 
 dotenv.config();
 const port = process.env.PORT;
@@ -19,6 +20,7 @@ MongoClient.connect(process.env.MEOWTIME_DB_URI, {
   .then(async (client) => {
     await petsDAO.injectDB(client);
     await eventsDAO.injectDB(client);
+    await reviewsDAO.injectDB(client);
     app.listen(port, () => {
       console.log(`listening on port ${port}...`);
     });

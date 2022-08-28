@@ -100,7 +100,7 @@ export default class eventsDAO {
     try {
       return await events.insertOne(eventDoc);
     } catch (e) {
-      console.error(`Unable to post review: ${e}`);
+      console.error(`Unable to post event: ${e}`);
       throw new Error(e);
     }
   }
