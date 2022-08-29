@@ -3,6 +3,7 @@ import petsRoutes from './routes/pets.route.js';
 import eventsRoutes from './routes/events.route.js';
 import reviewsRoutes from './routes/reviews.route.js';
 import auctionsRoutes from './routes/auctions.route.js';
+import bidsRoutes from './routes/bids.route.js';
 import dotenv from 'dotenv';
 
 dotenv.config();
@@ -13,11 +14,20 @@ app.use(petsRoutes);
 app.use(eventsRoutes);
 app.use(reviewsRoutes);
 app.use(auctionsRoutes);
+app.use(bidsRoutes);
 
 app.use((err, req, res, next) => {
-  if (err.name === 'UnauthorizedError') {
+  console.log(err.name);
+  if (err.name === 'UnauthorizedError' || err.name === 'InvalidTokenError') {
     res.status(401).json({
       status: '401',
+      message: err.message,
+      error: err.name + ': ' + err.message,
+    });
+    return;
+  } else {
+    res.status(200).json({
+      status: '200',
       message: err.message,
       error: err.name + ': ' + err.message,
     });
