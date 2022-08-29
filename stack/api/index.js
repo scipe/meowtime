@@ -5,6 +5,7 @@ import petsDAO from './dao/petsDAO.js';
 import eventsDAO from './dao/eventsDAO.js';
 import reviewsDAO from './dao/reviewsDAO.js';
 import auctionsDAO from './dao/auctionsDAO.js';
+import bidsDAO from './dao/bidsDAO.js';
 
 dotenv.config();
 const port = process.env.PORT;
@@ -23,6 +24,7 @@ MongoClient.connect(process.env.MEOWTIME_DB_URI, {
     await eventsDAO.injectDB(client);
     await reviewsDAO.injectDB(client);
     await auctionsDAO.injectDB(client);
+    await bidsDAO.injectDB(client);
     app.listen(port, () => {
       console.log(`listening on port ${port}...`);
     });
