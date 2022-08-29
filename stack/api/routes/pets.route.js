@@ -54,11 +54,4 @@ router.route('/api/version').get((req, res) => {
   );
 });
 
-// router.get('*', (req, res) =>
-//   res.status(404).json({
-//     url: req.protocol + '://' + req.get('host') + req.originalUrl,
-//     error: 'not found',
-//   })
-// );
-
 export default router;
