@@ -1,0 +1,781 @@
+{
+  "info": {
+    "_postman_id": "bb20e7a5-86d8-484a-a10b-f04e53606913",
+    "name": "MeowTime",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "4253876"
+  },
+  "item": [
+    {
+      "name": "Prepare",
+      "item": [
+        {
+          "name": "Get access token",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "content-type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"client_id\": {{client_id}},\n    \"client_secret\": {{client_secret}},\n    \"audience\": \"api.meowtime.com\",\n    \"grant_type\": \"client_credentials\"\n}"
+            },
+            "url": {
+              "raw": "https://meowtime.eu.auth0.com/oauth/token",
+              "protocol": "https",
+              "host": ["meowtime", "eu", "auth0", "com"],
+              "path": ["oauth", "token"]
+            },
+            "description": "Get access token here then paste it (without doublequotes) to environment variable `{{ authToken }}`"
+          },
+          "response": []
+        }
+      ],
+      "description": "First set up `{{client_id}}` and `{{client_secret}}` variables.\n\nTo get access token run \"Get access token\" request. Paste received token (without double quotes) to\n\n`{{AuthToken}}`\n\nvariable.",
+      "auth": {
+        "type": "noauth"
+      },
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "type": "text/javascript",
+            "exec": [""]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [""]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Pets",
+      "item": [
+        {
+          "name": "Auth",
+          "item": [
+            {
+              "name": "Add new pet",
+              "event": [
+                {
+                  "listen": "prerequest",
+                  "script": {
+                    "exec": [""],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"ownerId\": \"google-oauth2|108104244842814913076\",\r\n    \"petSpice\": \"dog\",\r\n    \"name\": \"Kony\",\r\n    \"age\": 5,\r\n    \"photo\": \"some_url\",\r\n    \"breed\": \"poodle\",\r\n    \"color\": \"gray\",\r\n    \"gender\": \"f\",\r\n    \"isCastrated\": true,\r\n    \"isVaccinated\": true,\r\n    \"isFleaTreated\": true,\r\n    \"weight\": 17,\r\n    \"fears\": \"no\",\r\n    \"diseases\": \"no\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{apiHost}}/api/pets",
+                  "host": ["{{apiHost}}"],
+                  "path": ["api", "pets"]
+                },
+                "description": "Add new pet"
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Non-Auth",
+          "item": [
+            {
+              "name": "Get all pets",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
+                "url": {
+                  "raw": "{{apiHost}}/api/pets",
+                  "host": ["{{apiHost}}"],
+                  "path": ["api", "pets"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get pet by ID (uuid)",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
+                "url": {
+                  "raw": "{{apiHost}}/api/pets/aa446c2c-42e3-463e-962f-682ec5930101",
+                  "host": ["{{apiHost}}"],
+                  "path": ["api", "pets", "aa446c2c-42e3-463e-962f-682ec5930101"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get pets with filter params",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
+                "url": {
+                  "raw": "{{apiHost}}/api/pets?petSpice=cat&gender=m",
+                  "host": ["{{apiHost}}"],
+                  "path": ["api", "pets"],
+                  "query": [
+                    {
+                      "key": "name",
+                      "value": "tim",
+                      "description": "Pet's name or it's part (string)\n",
+                      "disabled": true
+                    },
+                    {
+                      "key": "breed",
+                      "value": "poodle",
+                      "description": "Breed from breeds list (string)",
+                      "disabled": true
+                    },
+                    {
+                      "key": "petSpice",
+                      "value": "cat",
+                      "description": "Pet's spice (\"cat\"/\"dog\")"
+                    },
+                    {
+                      "key": "gender",
+                      "value": "m",
+                      "description": "Pet's gender (\"m\"/\"f\")"
+                    },
+                    {
+                      "key": "weightFrom",
+                      "value": "9",
+                      "description": "Pet's weight lower limit, inclusive. ",
+                      "disabled": true
+                    },
+                    {
+                      "key": "weightTo",
+                      "value": "10",
+                      "description": "Pet's weight upper limit, inclusive.",
+                      "disabled": true
+                    },
+                    {
+                      "key": "ageFrom",
+                      "value": "10",
+                      "description": "Pet's age lower limit, inclusive.",
+                      "disabled": true
+                    },
+                    {
+                      "key": "ageTo",
+                      "value": "12",
+                      "description": "Pet's age upper limit, inclusive.",
+                      "disabled": true
+                    },
+                    {
+                      "key": "isCastrated",
+                      "value": "false",
+                      "description": "Pet is castrated (true/false)",
+                      "disabled": true
+                    },
+                    {
+                      "key": "isVaccinated",
+                      "value": "true",
+                      "description": "Pet is vaccinated (true/false)",
+                      "disabled": true
+                    },
+                    {
+                      "key": "isFleaTreated",
+                      "value": "true",
+                      "description": "Pet is flea treated (true/false)",
+                      "disabled": true
+                    },
+                    {
+                      "key": "petsPerPage",
+                      "value": "4",
+                      "description": "Pets per page. Returns provided number of pets, or less for the last page. Default value: 1000.",
+                      "disabled": true
+                    },
+                    {
+                      "key": "page",
+                      "value": "2",
+                      "description": "Page number. Default value: 0.",
+                      "disabled": true
+                    },
+                    {
+                      "key": "ownerId",
+                      "value": "google-oauth2|108104244842814913076",
+                      "description": "Pet owner's ID\n",
+                      "disabled": true
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get breeds",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
+                "url": {
+                  "raw": "{{apiHost}}/api/breeds",
+                  "host": ["{{apiHost}}"],
+                  "path": ["api", "breeds"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Add new pet Not authorized",
+              "event": [
+                {
+                  "listen": "prerequest",
+                  "script": {
+                    "exec": [""],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"ownerId\": \"google-oauth2|108104244842814913076\",\r\n    \"petSpice\": \"dog\",\r\n    \"name\": \"Tobby\",\r\n    \"age\": 5,\r\n    \"photo\": \"some_url\",\r\n    \"breed\": \"poodle\",\r\n    \"color\": \"gray\",\r\n    \"gender\": \"m\",\r\n    \"isCastrated\": true,\r\n    \"isVaccinated\": true,\r\n    \"isFleaTreated\": true,\r\n    \"weight\": 17,\r\n    \"fears\": \"no\",\r\n    \"diseases\": \"no\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{apiHost}}/api/pets",
+                  "host": ["{{apiHost}}"],
+                  "path": ["api", "pets"]
+                },
+                "description": "Add new pet"
+              },
+              "response": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Events",
+      "item": [
+        {
+          "name": "Non-Auth",
+          "item": [
+            {
+              "name": "Get all events",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
+                "url": {
+                  "raw": "{{apiHost}}/api/events",
+                  "host": ["{{apiHost}}"],
+                  "path": ["api", "events"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get event by ID (uuid)",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
+                "url": {
+                  "raw": "{{apiHost}}/api/events/06a9ed52-7c2b-402a-995b-f2ce91ff8a12",
+                  "host": ["{{apiHost}}"],
+                  "path": ["api", "events", "06a9ed52-7c2b-402a-995b-f2ce91ff8a12"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get events with filter params",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
+                "url": {
+                  "raw": "{{apiHost}}/api/events?city=PskoV",
+                  "host": ["{{apiHost}}"],
+                  "path": ["api", "events"],
+                  "query": [
+                    {
+                      "key": "eventType",
+                      "value": "walk",
+                      "description": "Event type (\"walk\" | \"sit\")",
+                      "disabled": true
+                    },
+                    {
+                      "key": "ownerId",
+                      "value": "google-oauth2|108104244842814913076",
+                      "description": "Pet owner's ID",
+                      "disabled": true
+                    },
+                    {
+                      "key": "petId",
+                      "value": "aa446c2c-42e3-463e-962f-682ec5930101",
+                      "description": "Pet's ID (uuid)",
+                      "disabled": true
+                    },
+                    {
+                      "key": "dateFrom",
+                      "value": "2022-09-15",
+                      "description": "Event date lower limit (\"2022-09-13T13:13:00.000Z\" | \"2022-09-13\")\nRequest all events with event startDate greater than the parameter.",
+                      "disabled": true
+                    },
+                    {
+                      "key": "dateTo",
+                      "value": "2022-09-29T13:13:00.000Z",
+                      "description": "Event date upper limit (\"2022-09-13T13:13:00.000Z\" | \"2022-09-13\")\nRequest all events with event endDate lower than the parameter.",
+                      "disabled": true
+                    },
+                    {
+                      "key": "city",
+                      "value": "PskoV",
+                      "description": "Event city"
+                    },
+                    {
+                      "key": "address",
+                      "value": "Lenina, 102",
+                      "description": "Event address",
+                      "disabled": true
+                    },
+                    {
+                      "key": "status",
+                      "value": "in progress",
+                      "description": "Event status (new|canceled|assigned|in progress|completed)",
+                      "disabled": true
+                    }
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Auth",
+          "item": [
+            {
+              "name": "Add new event",
+              "event": [
+                {
+                  "listen": "prerequest",
+                  "script": {
+                    "exec": [""],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"eventType\": \"walk\",\r\n    \"ownerId\": \"google-oauth2|108104244842814913076\",\r\n    \"petId\": \"aa446c2c-42e3-463e-962f-682ec5930101\",\r\n    \"sitterId\": \"google-oauth2|108104244842814913076\",\r\n    \"startDate\": \"2022-09-13T09:13:00.000Z\",\r\n    \"endDate\": \"2022-09-15T09:15:00.000Z\",\r\n    \"city\": \"Pskov\",\r\n    \"address\": \"Mira st, 9\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{apiHost}}/api/events",
+                  "host": ["{{apiHost}}"],
+                  "path": ["api", "events"]
+                },
+                "description": "Add new pet"
+              },
+              "response": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Reviews",
+      "item": [
+        {
+          "name": "Non-Auth",
+          "item": [
+            {
+              "name": "Get all reviews",
+              "request": {
+                "method": "GET",
+                "header": []
+              },
+              "response": []
+            },
+            {
+              "name": "Get review by ID (uuid)",
+              "request": {
+                "method": "GET",
+                "header": []
+              },
+              "response": []
+            },
+            {
+              "name": "Get reviews with filter params",
+              "request": {
+                "method": "GET",
+                "header": []
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Auth",
+          "item": [
+            {
+              "name": "Add new review",
+              "event": [
+                {
+                  "listen": "prerequest",
+                  "script": {
+                    "exec": [""],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"reviewerId\": \"google-oauth2|108104244842814913076\",\r\n    \"petId\": \"aa446c2c-42e3-463e-962f-682ec5930101\",\r\n    \"review\": \"Good boy!\",\r\n    \"rate\": 5\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{apiHost}}/api/reviews",
+                  "host": ["{{apiHost}}"],
+                  "path": ["api", "reviews"]
+                },
+                "description": "Add new pet"
+              },
+              "response": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Auctions",
+      "item": [
+        {
+          "name": "Non-Auth",
+          "item": [
+            {
+              "name": "Get all auctions",
+              "request": {
+                "method": "GET",
+                "header": []
+              },
+              "response": []
+            },
+            {
+              "name": "Get auctions by ID (uuid)",
+              "request": {
+                "method": "GET",
+                "header": []
+              },
+              "response": []
+            },
+            {
+              "name": "Get auctions with filter params",
+              "request": {
+                "method": "GET",
+                "header": []
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Auth",
+          "item": [
+            {
+              "name": "Add new auction",
+              "event": [
+                {
+                  "listen": "prerequest",
+                  "script": {
+                    "exec": [""],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"eventId\": \"4e19e080-e505-4119-b7da-8b55aa607790\",\r\n    \"startPrice\": 5000\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{apiHost}}/api/auctions",
+                  "host": ["{{apiHost}}"],
+                  "path": ["api", "auctions"]
+                },
+                "description": "Add new pet"
+              },
+              "response": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Bids",
+      "item": [
+        {
+          "name": "Non-Auth",
+          "item": [
+            {
+              "name": "Get all bids",
+              "request": {
+                "method": "GET",
+                "header": []
+              },
+              "response": []
+            },
+            {
+              "name": "Get bids by ID (uuid)",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
+                "url": {
+                  "raw": "{{apiHost}}/api/bids/e2db7b73-3b0f-404d-93a8-a14616069613",
+                  "host": ["{{apiHost}}"],
+                  "path": ["api", "bids", "e2db7b73-3b0f-404d-93a8-a14616069613"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get bids with filter params",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
+                "url": {
+                  "raw": "{{apiHost}}/api/bids",
+                  "host": ["{{apiHost}}"],
+                  "path": ["api", "bids"],
+                  "query": [
+                    {
+                      "key": "auctionId",
+                      "value": "547a85c3-5c3d-4b53-b453-b610b6209a1e",
+                      "description": "Auction ID (uuid)",
+                      "disabled": true
+                    },
+                    {
+                      "key": "user_id",
+                      "value": "google-oauth2|108104244842814913076",
+                      "description": "User ID (Auth0)",
+                      "disabled": true
+                    }
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Auth",
+          "item": [
+            {
+              "name": "Add new bid",
+              "event": [
+                {
+                  "listen": "prerequest",
+                  "script": {
+                    "exec": [""],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"auctionId\": \"14a4b55c-0cd0-4bbc-82ee-904182a03949\",\r\n    \"user_id\": \"google-oauth2|108104244842814913076\",\r\n    \"price\": 7000\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{apiHost}}/api/bids",
+                  "host": ["{{apiHost}}"],
+                  "path": ["api", "bids"]
+                }
+              },
+              "response": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Get API version",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{apiHost}}/api/version",
+          "host": ["{{apiHost}}"],
+          "path": ["api", "version"]
+        }
+      },
+      "response": []
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{authToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "exec": [""]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "exec": [""]
+      }
+    }
+  ]
+}
