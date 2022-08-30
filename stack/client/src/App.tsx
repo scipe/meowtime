@@ -6,9 +6,7 @@ import { createTheme, ThemeProvider } from '@mui/material';
 import Splash from './pages/Splash/Splash';
 import UserCabinet from './pages/UserCabinet/UserCabinet';
 import ProtectedRoute from './auth/ProtectedRoute';
-import dotenv from 'dotenv';
 
-dotenv.config();
 const theme = createTheme({
   typography: {
     fontFamily: 'Roboto',
