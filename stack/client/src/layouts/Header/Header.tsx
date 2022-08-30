@@ -1,5 +1,5 @@
 import React from 'react';
-import { AppBar, Toolbar, Typography } from '@mui/material';
+import { AppBar, Toolbar, Typography } from '@mui/material'; // eslint-disable-line
 import { Container } from '@mui/system';
 import { useAuth0 } from '@auth0/auth0-react';
 import LoginButton from '../../components/LoginButtons/LoginButton';
@@ -14,7 +14,13 @@ const Header = () => {
       <Container>
         <Toolbar sx={{ height: 100 }}>
           <Logo />
-          <Typography fontFamily="Poppins" fontSize="36px" sx={{ color: 'black' }} marginLeft={1.2}>
+          <Typography
+            fontFamily="Poppins"
+            fontSize="36px"
+            sx={{ color: 'black' }}
+            marginLeft={1.2}
+            flexGrow={1}
+          >
             MeowTime
           </Typography>
           {isAuthenticated && <LogoutButton />}
