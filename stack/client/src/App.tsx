@@ -6,7 +6,9 @@ import { createTheme, ThemeProvider } from '@mui/material';
 import Splash from './pages/Splash/Splash';
 import UserCabinet from './pages/UserCabinet/UserCabinet';
 import ProtectedRoute from './auth/ProtectedRoute';
+import dotenv from 'dotenv';
 
+dotenv.config();
 const theme = createTheme({
   typography: {
     fontFamily: 'Roboto',
@@ -19,8 +21,8 @@ const theme = createTheme({
 const App: React.FC = () => {
   return (
     <Auth0Provider
-      domain="meowtime.eu.auth0.com"
-      clientId="kifi54TMhcXzodgIzHSHT3S13dpPhBOU"
+      domain={process.env.DOMAIN as string}
+      clientId={process.env.CLIENT_ID as string}
       redirectUri={`${window.location.origin}/cabinet`}
       cacheLocation="localstorage"
     >
