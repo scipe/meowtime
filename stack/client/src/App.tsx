@@ -6,6 +6,7 @@ import { createTheme, ThemeProvider } from '@mui/material';
 import Splash from './pages/Splash/Splash';
 import UserCabinet from './pages/UserCabinet/UserCabinet';
 import ProtectedRoute from './auth/ProtectedRoute';
+import SearchPage from './pages/SearchPage/SearchPage';
 
 const theme = createTheme({
   typography: {
@@ -29,6 +30,7 @@ const App: React.FC = () => {
           <Routes>
             <Route path="/" element={<Splash />} />
             <Route path="cabinet" element={<ProtectedRoute component={UserCabinet} />} />
+            <Route path="/search" element={<SearchPage />} />
           </Routes>
         </BrowserRouter>
       </ThemeProvider>
