@@ -5,7 +5,7 @@ import { useAuth0 } from '@auth0/auth0-react';
 import LoginButton from '../../components/LoginButtons/LoginButton';
 import LogoutButton from '../../components/LoginButtons/LogoutButton';
 import SignUpButton from '../../components/LoginButtons/SignUpButton';
-import Logo from '../../components/Logo/Logo';
+// import Logo from '../../components/Logo/Logo';
 
 const Header = () => {
   const { isAuthenticated } = useAuth0();
@@ -13,7 +13,7 @@ const Header = () => {
     <AppBar sx={{ background: '#FFF', color: '#4C51E1' }}>
       <Container>
         <Toolbar sx={{ height: 100 }}>
-          <Logo />
+          {/* <Logo /> */}
           <Typography
             fontFamily="Poppins"
             fontSize="36px"
