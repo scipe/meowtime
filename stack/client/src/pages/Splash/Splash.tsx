@@ -5,11 +5,13 @@ import SectionAbout from '../../layouts/splash/SectionAbout';
 import SectionReview from '../../layouts/splash/SectionReview';
 import SectionPets from '../../layouts/splash/SectionPets';
 import Footer from '../../layouts/Footer/Footer';
+import SearchForm from '../../components/SearchForm/SearchForm';
 
 const Splash = () => {
   return (
     <>
       <Header />
+      <SearchForm />
       <SectionCapabilities />
       <SectionAbout />
       <SectionReview />
