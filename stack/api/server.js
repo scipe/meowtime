@@ -1,4 +1,5 @@
 import express from 'express';
+import cors from 'cors';
 import petsRoutes from './routes/pets.route.js';
 import eventsRoutes from './routes/events.route.js';
 import reviewsRoutes from './routes/reviews.route.js';
@@ -10,6 +11,7 @@ dotenv.config();
 const app = express();
 
 app.use(express.json());
+app.use(cors());
 app.use(petsRoutes);
 app.use(eventsRoutes);
 app.use(reviewsRoutes);
