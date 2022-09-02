@@ -5,11 +5,14 @@ import { Button, Typography } from '@mui/material';
 import { Box, Container } from '@mui/system';
 import FilterButton from './FilterButtons';
 import FilterSelect from './FilterSelect';
+import FilterSittersList from './FilterSittersList';
 
 const LeftSideFilter = () => {
   return (
     <Container
       sx={{
+        display: 'flex',
+        flexDirection: 'row',
         marginTop: 0,
         mx: '0',
         marginBottom: 0,
@@ -105,6 +108,7 @@ const LeftSideFilter = () => {
           Reset filter
         </Button>
       </Box>
+      <FilterSittersList />
     </Container>
   );
 };

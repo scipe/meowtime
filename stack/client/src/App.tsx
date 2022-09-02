@@ -6,11 +6,8 @@ import { createTheme, ThemeProvider } from '@mui/material';
 import Splash from './pages/Splash/Splash';
 import UserCabinet from './pages/UserCabinet/UserCabinet';
 import ProtectedRoute from './auth/ProtectedRoute';
-<<<<<<< HEAD
 import SearchPage from './pages/SearchPage/SearchPage';
-=======
 import Filters from './pages/Filters/Filters';
->>>>>>> 2d02694 (feat ( client ): add page with filters, add left side filter)
 
 const theme = createTheme({
   typography: {
