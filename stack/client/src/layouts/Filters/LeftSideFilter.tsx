@@ -5,7 +5,6 @@ import { Button, Typography } from '@mui/material';
 import { Box, Container } from '@mui/system';
 import FilterButton from './FilterButtons';
 import FilterSelect from './FilterSelect';
-import FilterSittersList from './FilterSittersList';
 
 const LeftSideFilter = () => {
   return (
@@ -24,7 +23,6 @@ const LeftSideFilter = () => {
           maxWidth: 400,
           display: 'flex',
           flexDirection: 'column',
-          alignContent: 'flex-start',
           flexWrap: 'wrap',
         }}
       >
@@ -108,7 +106,6 @@ const LeftSideFilter = () => {
           Reset filter
         </Button>
       </Box>
-      <FilterSittersList />
     </Container>
   );
 };
