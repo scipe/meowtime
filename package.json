@@ -1,0 +1,43 @@
+{
+  "name": "meowtime",
+  "version": "0.0.1",
+  "description": "... short description here",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/scipe/meowtime.git"
+  },
+  "author": "",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/scipe/meowtime/issues"
+  },
+  "homepage": "https://github.com/scipe/meowtime#readme",
+  "devDependencies": {
+    "husky": "4.3.8",
+    "lint-staged": "8.2.1",
+    "prettier": "^2.7.1"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "concurrent": false,
+    "subTaskConcurrency": 1,
+    "linters": {
+      "*.{js,tsx,scss,sass,json,md}": [
+        "prettier --write",
+        "git add"
+      ]
+    }
+  },
+  "dependencies": {
+    "express-jwt": "^7.7.5",
+    "jwks-rsa": "^2.1.4",
+    "uuid": "^8.3.2"
+  }
+}
