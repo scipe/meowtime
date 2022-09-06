@@ -8,7 +8,7 @@
 ... nodejs 16.16.0, etc
 
 ## Installation
-... how to install
+Go to stack -> client -> npm install -> npm start
 
 ## Usage
 ... how to run
